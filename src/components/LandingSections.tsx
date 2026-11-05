@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Building2,
   Home,
@@ -145,13 +145,6 @@ export const LandingSections: React.FC<LandingSectionsProps> = ({
   recentQuotes,
   onTriggerQuote,
 }) => {
-  const [galleryFilter, setGalleryFilter] = useState<'all' | 'corporate' | 'residential' | 'fleet'>('all');
-
-  const filteredCases =
-    galleryFilter === 'all'
-      ? GALLERY_CASES
-      : GALLERY_CASES.filter((item) => item.category === galleryFilter);
-
   return (
     <div className="bg-slate-950 text-slate-100">
       {/* Continuous Left-to-Right Corporate Clients Marquee (Directly Below Hero Section) */}
@@ -398,8 +391,6 @@ export const LandingSections: React.FC<LandingSectionsProps> = ({
             <div className="space-y-3">
               <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-orange-500">
                 <span>Execution Gallery &amp; Proof</span>
-                <span aria-hidden="true">·</span>
-                <span className="text-slate-400">Recent Chennai &amp; Guduvancheri Dispatches</span>
               </div>
               <h2
                 id="gallery-heading"
@@ -408,39 +399,10 @@ export const LandingSections: React.FC<LandingSectionsProps> = ({
                 Verified Corporate &amp; Household Move Benchmarks
               </h2>
             </div>
-
-            {/* Interactive Filter Controls */}
-            <div
-              role="group"
-              aria-label="Filter case studies by relocation type"
-              className="flex flex-wrap items-center gap-1 p-1 bg-slate-900 border border-slate-800 rounded-lg self-start"
-            >
-              {(
-                [
-                  { id: 'all', label: 'All Moves' },
-                  { id: 'corporate', label: 'IT & Corporate' },
-                  { id: 'fleet', label: 'Heavy Fleet' },
-                  { id: 'residential', label: 'Residential' },
-                ] as const
-              ).map((tab) => (
-                <button
-                  key={tab.id}
-                  type="button"
-                  onClick={() => setGalleryFilter(tab.id)}
-                  className={`px-3.5 py-2 text-xs font-semibold rounded-md transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
-                    galleryFilter === tab.id
-                      ? 'bg-orange-600 text-white shadow-sm'
-                      : 'text-slate-300 hover:text-white'
-                  }`}
-                >
-                  {tab.label}
-                </button>
-              ))}
-            </div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {filteredCases.map((item) => (
+            {GALLERY_CASES.map((item) => (
               <article
                 key={item.id}
                 className="rounded-lg bg-slate-900/90 border border-slate-800 p-6 flex flex-col justify-between space-y-5"
