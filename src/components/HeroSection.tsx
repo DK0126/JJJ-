@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowRight, Phone } from 'lucide-react';
 import { LeadFormCard } from './LeadFormCard';
 import { CalculatedQuote, SubmittedEnquiry } from '../utils/quoteCalculator';
+import heroBgImage from '../assets/images/clean_jjj_hero_bg_1793841469590.jpg';
 
 interface HeroSectionProps {
   fromInputRef: React.RefObject<HTMLInputElement | null>;
@@ -27,7 +28,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       {/* Full-width, full-height Background Image with fallback container */}
       <div className="absolute inset-0 z-0 overflow-hidden bg-slate-900">
         <img
-          src="/src/assets/images/clean_jjj_hero_bg_1793841469590.jpg"
+          src={heroBgImage}
           alt="JJJ Packers and Movers relocation crew loading corporate office equipment into moving truck in Chennai"
           referrerPolicy="no-referrer"
           className="w-full h-full object-cover object-center select-none pointer-events-none"
